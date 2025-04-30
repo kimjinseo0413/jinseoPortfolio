@@ -447,10 +447,10 @@ footer.motion .txt .rightBox .info .box::before { content: ""; position: absolut
 
 
 /* 포트폴리오 작업물 크기 조정 */
-.bbiang .imgBox {width: 100%;}
-.bbiang .imgBox img {width: 100%;}
-.safeApp .imgBox {width: 100%;}
-.safeApp .imgBox img {width: 100%;}
+.biangDesign .imgBox {width: 100%;}
+.biangDesign .imgBox img {width: 100%;}
+.safeDesign.imgBox {width: 100%;}
+.safeDesign .imgBox img {width: 100%;}
 .poster .imgBox {width: 100%; height: 120vh;}
 .poster .imgBox img {width: 100%; margin-top: 80px;}
 /* responsive */
