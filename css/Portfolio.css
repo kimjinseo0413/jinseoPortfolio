@@ -1,0 +1,847 @@
+@charset "UTF-8";
+/* 폰트 */
+@import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Scheherazade+New:wght@400;500;600;700&display=swap');
+
+
+/* reset */
+* {margin: 0;padding: 0;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+button {background: none; border: none;}
+img {vertical-align: middle;}
+
+/* 영어 폰트 */
+.ens {font-family: "Fraunces", serif;}
+.en {font-family: "Scheherazade New", serif;}
+.ko { font-family: 'Spoqa Han Sans Neo', sans-serif; }
+/* layout */
+body { font-family: 'Spoqa Han Sans Neo', sans-serif; font-size: 17px; line-height: 1.6; }
+
+.wrap {position: relative; margin: 0 auto; overflow: hidden; background: #fffffd; color: #1d1a16; }
+
+/* header */
+header { margin: auto; width: 100%; height: 8vh; position: fixed; left: 0; top: 0; background: #fffffd; z-index: 100; padding: 0px 180px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #979797; }
+header.active {transform: translateY(-100%);}
+header .logo { display: block; width: 67px; height: auto; }
+header .logo img { width: 100%; }
+.gnb { display: flex; justify-content: flex-end; align-items: center; height: 100%; flex-grow: 1; }
+.gnb ul { display: flex; justify-content: flex-end; align-items: center; height: 100%; margin: 0; }
+.gnb ul li { margin-left: 70px; }
+.gnb ul li a { display: flex; justify-content: center; align-items: center; height: 100%; margin-top: 10px; white-space: normal; text-transform: uppercase; font-size: 17px;}
+header .menuOpen { display: none; transition: 0.3s; }
+
+/* gnb hover 효과 */
+.gnb ul li a .char { display: inline-block; position: relative; color: transparent; overflow: hidden; }
+.gnb ul li a .whitespace { display: inline-block; width: 0.4em; }
+
+.gnb ul li a .char:before, .gnb ul li a .char:after { position: absolute; top: 0; left: 0; opacity: 0.6; color: #383838; content: attr(data-char); transition: transform 0.35s; transition-delay: calc(30ms * var(--char-index)); }
+.gnb ul li a .char:before { transform: translateY(100%); }
+.gnb ul li a:hover .char:before { transform: translateY(0%); opacity: 1; }
+.gnb ul li a:hover .char:after { transform: translateY(-100%); }
+
+/* visual */
+.visual {width: 100%; height: 110vh; padding: 130px 180px 0; box-sizing: border-box; position: relative;} 
+.visual::after {content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background-color: #B8B8B8;}
+.visual .mainText {position: relative; width: 100%; height: 20vh; font-size: 228px; font-weight: 400; text-transform: uppercase; white-space: nowrap;}
+.visual .mainText p.bigText {color: #1D1A16; position: absolute; top: -20px; left: 50%; transform: translateX(-50%);}
+.visual .mainText ul {position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; z-index: 1;}
+.visual .mainText ul li {font-size: 37px; font-weight: 400; text-transform: uppercase; color: #1D1A16;}
+.visual .mainImg {width: 85%; margin: 75px auto 0; display: flex; justify-content: center; align-items: center; position: relative;}
+.visual .mainImg .imgBox {display: flex; justify-content: space-between; align-items: center; width: 100%; position: relative;}
+.visual .mainImg .imgBox div {display: flex; justify-content: center; align-items: center;}
+.visual .mainImg .imgBox div p {margin: 0;}
+.visual .mainImg .imgBox div p img {width: 487px; display: block;}
+.visual .mainImg .imgBox div:first-child p img {width: 438px;} 
+.visual .subText {width: 90%; margin-top: 10px; display: flex; justify-content: space-between;}
+.visual .subText h2 {font-weight: 500; font-size: 20px; color: #4D473F;text-transform: uppercase; margin-bottom: 8px;}
+.visual .subText .subText01 p {font-weight: 400; font-size: 18px; color: #4D473F; letter-spacing: -0.05em; line-height: 1.6;}
+.visual .subText .subText02 p {text-transform: uppercase; font-size: 20px;line-height: 1.5;}
+.visual .subText .subText03 p {font-size: 20px;line-height: 1.5; letter-spacing: 0.03em;}
+.visual .mainImg .text.ens > li { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; transition: all 0.3s; }
+.visual .mainImg .text.ens li h2 { width: 35px; height: 35px; background-color: #1D1A16; color: #FFFFFF; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 17px; font-weight: 400; flex-shrink: 0; cursor: pointer; }
+.visual .mainImg .text.ens li:nth-child(1) { top: 60%; left: 31%; }
+.visual .mainImg .text.ens li:nth-child(2) { top: 50%; left: 70%; }
+.visual .mainImg .text.ens li:nth-child(3) { top: 20%; left: 97%; }
+.visual .mainImg .text.ens li p.inner {padding-bottom: 3px; box-sizing: border-box; opacity: 0; visibility: hidden; margin-left: 10px; font-size: 25px; color: #1D1A16; transition: all 0.3s ease; white-space: nowrap; border-bottom: 1.5px solid #1D1A16; line-height: 1;}
+.visual .mainImg .text.ens li p.inner.on { opacity: 1; visibility: visible; margin-left: 20px; }
+
+/* aboutMe */
+.aboutMeTit {width: 100%; height: 40vh; padding: 157px 180px 0; box-sizing: border-box; position: relative;}
+.aboutMeTit .mainText {position: relative; width: 100%; min-height: 30vh; overflow: hidden;}
+.aboutMeTit .mainText p {font-size: 117px; text-transform: uppercase; line-height: 1; color: #1D1A16;}
+.aboutMeTit .mainText ul {display: flex; justify-content: space-between; align-items: center;}
+.aboutMeTit .mainText ul li {font-size: 117px; line-height: 1; text-transform: uppercase; color: #1D1A16;}
+.aboutMeTit .mainText ul li:nth-child(1) {text-transform: none; color: #383838; font-size: 20px; line-height: 1.5em;}
+
+.aboutMe {position: relative; width: 100%; height: 110vh; margin-top: 0px; padding: 95px 180px 180px; box-sizing: border-box; overflow: hidden;} 
+.aboutMe::after {content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background-color: #B8B8B8;} 
+.aboutMe .inner {position: relative; width: 93%; height: auto; min-height: 100vh; margin-left: auto; display: flex; justify-content: space-between; gap: 150px;}
+.aboutMe .inner .leftBox {width: 28%; overflow: visible; position: relative;}
+.aboutMe .inner .leftBox .img {width: 410px; height: 410px;}
+.aboutMe .inner .leftBox .img img {width: 100%;}
+.aboutMe .inner .leftBox .name {margin: 45px 0 28px; overflow: hidden;}
+.aboutMe .inner .leftBox .name h2 {text-transform: uppercase; font-size: 39px; font-weight: 500; line-height: 1; color: #1D1A16; margin-bottom: 5px;}
+.aboutMe .inner .leftBox .name p {font-size: 20px; font-weight: 500; color: #4D473F;}
+.aboutMe .inner .leftBox .info01 {margin-bottom: 20px; padding-left: 16px; box-sizing: border-box;}
+.aboutMe .inner .leftBox .info02 {padding-left: 16px; box-sizing: border-box;}
+.aboutMe .inner .leftBox dl {line-height: 1.8; margin-bottom: 20px;}
+.aboutMe .inner .leftBox dl::after {content: ""; display: block; clear: both;}
+.aboutMe .inner .leftBox dl dt, .aboutMe .inner .leftBox dl dd {display: block; float: left; font-size: 16px; font-weight: 400; line-height: 1.3; background-color: transparent; margin: 4px 0;}
+.aboutMe .inner .leftBox dl dt {width: 130px; color: #1D1A16; text-transform: uppercase;}
+.aboutMe .inner .leftBox dl dd {width: calc(100% - 130px); color: #4D473F;}
+
+.aboutMe .inner .rightBox {width: 72%; margin-top: 0px; margin-left: 0; overflow: visible; position: relative;}
+.aboutMe .inner .rightBox .sectionList {position: relative; height: 1500px; margin-top: 135px;}
+.aboutMe .inner .rightBox .sectionList > li { position: absolute; top: 0; left: 0; width: 100%; height: 390px; border-top: 1px solid #B8B8B8; padding: 15px 0 0; box-sizing: border-box; opacity: 1; z-index: 0;}
+.upBox {position: absolute; top: 0; left: 0; width: 100%; background-color: #fffffd;}
+.aboutMe .inner .rightBox .sectionList li h2 {font-size: 25px; font-weight: 500; text-transform: uppercase; margin-bottom: 15px;}
+.aboutMe .inner .rightBox .sectionList .education { z-index: 1;}
+.aboutMe .inner .rightBox .sectionList .skills { top: 70px; z-index: 2;}
+.aboutMe .inner .rightBox .sectionList .award {top: 140px; z-index: 3;}
+.aboutMe .inner .rightBox .sectionList .activity {top: 210px; z-index: 4;}
+.aboutMe .inner .rightBox dl { display: grid; grid-template-columns: 160px auto; row-gap: 10px; column-gap: 38px; }
+.aboutMe .inner .rightBox dl dt { font-size: 16px; font-weight: 400; color: #4D473F; text-align: left; width: 160px; white-space: nowrap; }
+.aboutMe .inner .rightBox dl dd { font-size: 16px; font-weight: 400; color: #1D1A16; letter-spacing: -0.03em; } 
+.aboutMe .education .con dl dd { font-size: 16px; color: #383838; }
+.aboutMe .education .con dl dd .school { display: inline-block; margin-bottom: 6px; }
+.aboutMe .education .con dl dd .labelWrap { color: #737270; }
+.aboutMe .education .con dl dd .label { margin-right: 10px; }
+.aboutMe .skills h2 {letter-spacing: 0.03em;}
+.aboutMe .skills .con {display: flex; flex-direction: row; justify-content: flex-start; flex-wrap: wrap;}
+.aboutMe .skills .right, .aboutMe .skills .left {margin: 0; padding: 0;}
+.aboutMe .skills .left {margin-left: 70px;}
+.aboutMe .skills li {display: flex; align-items: center; gap: 60px; margin-bottom: 3px;}
+.aboutMe .skills .left li {gap: 10px;}
+.aboutMe .skills .skill-title {white-space: nowrap; min-width: 100px; max-width: 120px; text-align: left; font-size: 17px; font-weight: 400; color: #1D1A16;}
+.aboutMe .award h2 {letter-spacing: -0.03em;}
+.aboutMe .activity h2 {letter-spacing: 0.04em;}
+.aboutMe .activity .con dl dt { display: flex; align-items: center; }
+.aboutMe .activity .con dl dt span:nth-child(1) { color: #B8B8B8; font-weight: 400; font-size: 12px; margin-left: 5px; }
+.aboutMe .activity .con dl dt span:nth-child(2) { color: #9E9C99; font-size: 16px;margin-left: 4px; }
+.aboutMe .activity .con dl dd span { color: #B8B8B8; font-weight: 400; font-size: 15px; margin:0 3px 0;}
+/* 게이지바 ani */
+.aboutMe .skills .skill-meter {display: flex; align-items: center; gap: 10px; flex: 1; max-width: calc(100% - 120px);}
+.aboutMe .skills .skill-meter .bar {width: 130px; height: 5px; background: #D9D9D9; position: relative; flex-shrink: 0;}
+.aboutMe .skills .skill-meter .now {position: absolute; top: 0; left: 0; height: 5px; background: #4E4A4A; }
+.aboutMe .skills .skill-meter .now.animate-bar {animation: fillBar 2s ease forwards;}
+.aboutMe .skills .percent {flex-shrink: 0; white-space: nowrap;}
+.aboutMe .skills .percent p {font-size: 15px; font-weight: 400; color: #777167; white-space: nowrap;}
+.aboutMe .skills .percent span {font-size: 12px; font-weight: 400; color: #979797; white-space: nowrap; margin-left: 3px;}
+@keyframes fillBar {
+  0% {width: 0;}
+  100% {width: var(--target-width);}
+}
+
+/* .work */
+.work {height: 110vh; position: relative;}
+.work::after {content: ''; position: absolute; left: 0; bottom: -130px; width: 100%; height: 1px; background-color: #B8B8B8;}
+.work .inner {width: 100%; height: 110vh; padding: 130px 180px 0; box-sizing: border-box; position: relative;}
+.work .inner .Tit {display: flex; justify-content: space-between; align-items: flex-end; width: fit-content; gap: 40px; flex-wrap: nowrap;}
+.work .inner .Tit h2 {font-size: 149px; font-weight: 400; color: #1D1A16; text-transform: uppercase; line-height: 1; white-space: nowrap;}
+.work .inner .Tit p {font-size: 20px; font-weight: 400; color: #383838; line-height: 1.5; transform: translateY(15px);}
+.work .inner .Tit p span {display: inline-block; white-space: pre-wrap; word-break: keep-all;}
+.work .inner ul {display: flex; padding: 3% 0%; box-sizing: border-box; transform: translateY(-60px);}
+.work .inner ul li {width: 600px; padding: 100px; box-sizing: border-box; flex-shrink: 0;}
+.work .inner ul a {display: block; width: 100%; position: relative;}
+.work .inner ul a .imgBox {position: relative;}
+.work .inner ul a .imgBox img {width: 100%;}
+.work .inner ul a .textBox {position: absolute; left: 0; bottom: 10%;}
+.work .inner ul a .textBox p:nth-child(2) {margin-bottom: 5px;}
+.work .inner ul a .textBox .tag {font-size: 14px; text-transform: uppercase; font-weight: 400; color: #4D473F;}
+.work .inner ul a .textBox .tit {font-size: 28px; text-transform: uppercase; font-weight: 500; letter-spacing: -0.03em; color: #1D1A16;}
+.work .inner ul a .textBox .txt {font-size: 16px; font-weight: 500; letter-spacing: -0.03em; color: #8E8C89;}
+/* .work.inBox 크기 잘르기 inset활용  */
+.work .inner ul a .imgBox {clip-path: inset(20%);}
+.work .inner ul a .textBox {opacity: 0;}
+/* work counter */
+.work .inner .counter {position: absolute; font-size: 25px; right: 15%; bottom: 8%; letter-spacing: -3px; color: #9E9C99;}
+.work .inner .counter .now {font-size: 47px; color: #383838;}
+.work .inner ul a .num {width: 100%;}
+
+/* footer */
+footer {width: 100%; min-height: 110vh; transform: translateY(7%); padding: 0px 180px 0; box-sizing: border-box; position: relative; margin-bottom: 130px;}
+footer .linBanner {width: 100%; position: absolute; top: 10%; left:0; margin-bottom: 60px; overflow: hidden;}
+footer .linBanner ul {display: flex; white-space: nowrap;}
+footer .linBanner ul li p:nth-child(1) {font-size: 117px; font-weight: 600; text-transform: uppercase; color: #F4F4F4; line-height: 1;}
+footer .linBanner ul li p:nth-child(2) {font-size: 20px; color: #E6E6E6;}
+footer .linBanner ul li {display: flex; justify-content: space-between; align-items: center; width: fit-content; gap: 40px; animation: textLoop 18s linear infinite; padding: 0 20px; box-sizing: border-box;}
+@keyframes textLoop {
+  0% {transform: translate3d(0,0,0);}
+  100%{transform: translate3d(-100%,0,0);}
+  
+}
+footer .txt {display: flex; justify-content: space-between; gap: 60px; transform: translateY(60%);}
+footer .txt .leftBox {flex: 1; max-width: 50%;}
+footer .txt .leftBox h2 {font-size: 37px; font-weight: 700; line-height: 1.5; margin-bottom: 30px; color: #1D1A16; letter-spacing: -0.03em;}
+footer .txt .leftBox p {font-size: 18px; color: #737270; line-height: 1.8; letter-spacing: -0.03em;}
+footer .txt .rightBox {flex: 1; max-width: 50%; transform: translateY(28%);}
+footer .txt .rightBox .info .box {position: relative; padding-top: 30px; margin-bottom: 40px;}
+footer .txt .rightBox .info .box h3 {font-size: 18px; font-weight: 500; margin-bottom: 15px; color: #1D1A16;}
+footer .txt .rightBox .info .box p {font-size: 16px; line-height: 1.6; color: #737270; margin-bottom: 10px;letter-spacing: -0.03em;}
+footer .txt .rightBox .info .box ul.tag {display: flex; gap: 20px; font-size: 15px; color: #1D1A16; font-weight: 400; margin: 10px 0; padding: 0; list-style: none;flex-wrap: nowrap; letter-spacing: -0.03em;}
+footer .txt .rightBox .info dl {margin-top: 15px; display: grid; grid-template-columns: 90px auto; row-gap: 1px; column-gap: 20px; letter-spacing: 0.02em;}
+footer .txt .rightBox .info dt {font-size: 15px; font-weight: 500; color: #4D473F}
+footer .txt .rightBox .info dd {font-size: 15px; color: #737270;}
+
+/* aboutMe page*/
+
+/*intro*/
+.intro {width: 100%; height: 105vh; position: relative; padding: 130px 180px 0; box-sizing: border-box;}
+.intro::after {content: ''; position: absolute; left: 0; bottom: 0px; width: 100%; height: 1px; background-color: #B8B8B8;}
+.intro .inner {width: 100%; height: 758px; display: flex; justify-content: space-between; align-items: flex-start; gap: 60px; position: relative;}
+.intro .inner .txtBox .txt { position: absolute; top: 10px; font-size: 38px; font-weight: 400; color: #1D1A16; line-height: 1.1;}
+.intro .inner .txtBox .info { position: absolute; top: 58%; left: 13%; display: flex; justify-content: space-between; gap: 40px;}
+.intro .inner .txtBox .info li h3 {font-size: 18px; color: #383838; font-weight: 500; text-transform: uppercase; margin-bottom: 10px;}
+.intro .inner .txtBox .info li p {font-size: 16px; font-weight: 400; color: #4D473F; line-height: 1.6; letter-spacing: -0.03em;}
+.intro .inner .imgBox {width: 355px; height: 758px; flex-shrink: 0;}
+.intro .inner .imgBox img {width: 100%; object-fit: cover;}
+.intro .inner .mainText {position: absolute; bottom: 20px; left: 50px;}
+.intro .inner .mainText h2 span {font-size: 170px; font-weight: 500; text-transform: uppercase; color: #1D1A16; line-height: 1; letter-spacing: 0.05em;}
+
+
+/* con01*/
+.con01 {position: relative; width: 100%; height: 180vh; margin-top: 0px; padding: 95px 180px 95px; box-sizing: border-box;} 
+.con01 .inner {position: relative; width: 100%; height: 200vh; display: flex; justify-content: space-between;}
+.con01 .inner .leftBox {width: 25%; overflow: visible; position: relative; }
+.con01 .inner .leftBox h2 {font-size: 37px; font-weight: 500; color: #4D473F; line-height: 1.2;}
+.con01 .inner .rightBox {width: 64%; margin-top: 0px; margin-left: 0; overflow: visible; position: relative; }
+.con01 .inner .rightBox .list>li{ padding-left: 12px; box-sizing: border-box; margin-bottom: 50px;}
+.con01 .inner .rightBox .list .wrap li{ padding-left: 12px; box-sizing: border-box;}
+.con01 .inner .rightBox .listName {font-size: 27px; font-weight: 500; text-transform: uppercase; margin-bottom: 15px; padding-top: 15px; box-sizing: border-box;}
+.con01 .inner .rightBox div dl { display: grid; grid-template-columns: 230px auto; row-gap: 10px; column-gap: 40px; }
+.con01 .inner .rightBox div dl dt { font-size: 16px; font-weight: 400; color: #4D473F; text-align: left; width: 160px; white-space: nowrap; color: #1D1A16; text-transform: uppercase;}
+.con01 .inner .rightBox div dl dd { font-size: 16px; font-weight: 400; color: #1D1A16; letter-spacing: -0.03em; color: #4D473F;}
+.con01 .inner .rightBox .list li .wrap {display: flex; justify-content: space-between; flex-wrap: nowrap; gap: 70px; overflow: visible; }
+.con01 .inner .rightBox .list li .wrap .profile{width: 45%;}
+.con01 .inner .rightBox .list li .wrap .skills {width: 55%;}
+.con01 .profile .name p {font-size: 20px; font-weight: 400; color: #1D1A16;}
+.con01 .profile .name h2 {text-transform: uppercase; font-size: 15px; font-weight: 400; color: #737270; margin-bottom: 18px;}
+.con01 .inner .rightBox .list .profile dl { display: grid; grid-template-columns: 100px auto; row-gap: 10px; column-gap: 50px; line-height: 1; margin-bottom: 15px; }
+.con01 .inner .rightBox .profile .info01 {margin-bottom: 20px;}
+.con01 .inner .rightBox .profile dl dt, .con01 .inner .rightBox .profile dl dd {display: block; float: left; font-size: 16px; font-weight: 400; line-height: 1; background-color: transparent; margin: 2px 0;}
+.con01 .skills .box .listName {letter-spacing: 0.04em;}
+.con01 .skills .con {display: flex; flex-direction: row; justify-content: flex-start; flex-wrap: wrap;}
+.con01 .skills .con ul { display: flex; flex-direction: column; gap: 7px;}
+.con01 .skills li {display: flex; align-items: center; gap: 25px; margin-bottom: 3px;}
+.con01 .skills .skill-title {white-space: nowrap; width: 180px; text-align: left; font-size: 17px; font-weight: 400; color: #1D1A16;}
+
+.con01 .skills .percent p {font-size: 16px; color: #777167; white-space: nowrap;}
+.con01 .skills .percent p span  {font-size: 14px; color: #777167; white-space: nowrap; margin-left: 3px}
+.con01 .education .con dl dd { font-size: 16px; color: #383838; }
+.con01 .education .con dl dd .school { display: inline-block; margin-bottom: 6px; }
+.con01 .education .con dl dd .labelWrap { color: #737270; }
+.con01 .education .con dl dd .label { margin-right: 10px; }
+.con01 .award .box .listName {letter-spacing: -0.03em;}
+.con01 .activity .box .listName {letter-spacing: 0.03em;}
+.con01 .activity .con dl dt { display: flex; align-items: center; }
+.con01 .activity .con dl dt span:nth-child(1) { color: #B8B8B8; font-weight: 400; font-size: 12px; margin-left: 5px; }
+.con01 .activity .con dl dt span:nth-child(2) { color: #9E9C99; font-size: 16px;margin-left: 4px; }
+.con01 .activity .con dl dd span { color: #B8B8B8; font-weight: 400; font-size: 15px; margin:0 3px 0;}
+/* 게이지바 ani */
+.con01 .skills .skill-meter {display: flex; align-items: center; gap: 10px; flex: 1; max-width: calc(100% - 120px);}
+.con01 .skills .skill-meter .bar {width: 180px; height: 5px; background: #D9D9D9; position: relative; flex-shrink: 0;}
+.con01 .skills .skill-meter .now {position: absolute; top: 0; left: 0; height: 5px; background: #4E4A4A; width: 0;}
+.con01.motion .skills .skill-meter .now {animation: fillBar 2s ease forwards;}
+@keyframes fillBar {
+  0% {width: 0;} 
+  100% {width: var(--target-width);}
+}
+
+/* con02 */
+.con02 {position: relative; width: 100%; height: 75vh; margin-top: 0px; padding: 0px 180px 95px; box-sizing: border-box;} 
+.con02 .inner {position: relative; width: 100%; height: 200vh; display: flex; justify-content: space-between;}
+.con02 .inner .leftBox {width: 25%; overflow: visible;}
+.con02 .inner .leftBox h2 {font-size: 37px; font-weight: 500; color: #4D473F; line-height: 1.2;}
+.con02 .inner .likeList {display: flex; justify-content: space-between; width: 64%;}
+.con02 .inner .likeList li { width: 254px; position: relative;}
+.con02 .inner .likeList li .box .num {width: 30px; height: 30px; background: #1D1A16; border-radius: 50%; line-height: 26px; margin-bottom: 45px; position: relative;}
+.con02 .inner .likeList li .box .num p{color: #fff; font-size: 16px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.con02 .inner .likeList li .box h3 {font-size: 22px; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.03em; color: #1D1A16;}
+.con02 .inner .likeList li .box p {font-size: 16px; font-weight: 400; color: #737270; line-height: 1.6; margin-bottom: 30px; letter-spacing: -normal;}
+.con02 .inner .likeList li .imgBox {width: 244px; height: 200px; flex-shrink: 0; position: relative; overflow: hidden;}
+.con02 .inner .likeList li .imgBox .default-img, .con02 .inner .likeList li .imgBox .hover-img {width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: opacity 0.5s ease, transform 0.5s ease;}
+.con02 .inner .likeList li .imgBox .hover-img {opacity: 0; z-index: 2;}
+.con02 .inner .likeList li .imgBox:hover .hover-img {opacity: 1; transform: scale(1.05);}
+.con02 .inner .likeList li .imgBox:hover .default-img {opacity: 0; transform: scale(1.05);}
+
+/* con3 */
+.con03 {position: relative; width: 100%; height: 48vh; margin-top: 0px; padding: 0px 180px 95px; box-sizing: border-box;} 
+.con03::after {content: ''; position: absolute; left: 0; bottom: -120px; width: 100%; height: 1px; background-color: #B8B8B8;} 
+.con03 .inner {position: relative; width: 100%; height: 200vh; display: flex; justify-content: space-between;}
+.con03 .inner .leftBox {width: 25%; overflow: visible; position: relative; }
+.con03 .inner .leftBox h2 {font-size: 37px; font-weight: 500; color: #4D473F; line-height: 1.2;}
+.con03 .inner .quList { position: relative; display: flex; justify-content: space-between;  flex-direction: column; width: 64%; justify-content: flex-start;}
+.con03 .inner .quList li {width: 100%; border-bottom: 1px solid #D9D9D9; padding: 28px 0px 28px 18px; box-sizing: border-box;}
+.con03 .inner .quList li:nth-child(1) {border-top: 1px solid #D9D9D9;}
+.con03 .inner .quList .q {width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer;}
+.con03 .inner .quList .q .text {font-size: 14px; font-weight: 400; color: #8C8884; display: flex; align-items: center; letter-spacing: 0.03em;}
+.con03 .inner .quList .q .text p {font-size: 20px; font-weight: 400; color: #1D1A16; display: inline-block; margin-left: 35px; letter-spacing: -0.03em; }
+.con03 .inner .quList .q .icon {width: 18px; flex-shrink: 0;}
+.con03 .inner .quList .q .icon img { width: 100%; height: auto; transition: transform 0.5s ease, opacity 0.5s ease;}
+.quList .a {display: none; font-size: 16px; font-weight: 400; color: #737270; line-height: 1.7; padding: 10px 0 20px; letter-spacing: -0.03em; margin: 18px 0 0 121px;}
+.quList li.active .a {display: block;}
+
+
+/* workPage */
+.workTit {width: 100%; height: 58vh; padding: 140px 180px 0; box-sizing: border-box; position: relative;}
+.workTit .mainText {position: relative; width: 100%; overflow: hidden; height: 40vh;}
+.workTit .mainText .top {display: flex; justify-content: flex-end; align-items: center; font-size: 117px; text-transform: uppercase; line-height: 1; color: #1D1A16; margin-bottom: 20px;}
+.workTit .mainText .top li:nth-child(2){margin-left: 85px;} 
+.workTit .mainText .bottom {display: flex; justify-content: flex-start; align-items: center; font-size: 117px; text-transform: uppercase; line-height: 1; color: #1D1A16;}
+.workTit .mainText .bottom li:nth-child(1) {margin-right: 22px;}
+.workTit .mainText .bottom li:nth-child(2) {text-transform: none; color: #737270; font-size: 20px; font-weight: 400; line-height: 1.5em; margin-right: 55px; margin-top: 45px; letter-spacing: 0.03em;} 
+
+.workMain  {position: relative; width: 100%; height: 130vh; margin-top: 0px; padding: 0px 180px 95px; box-sizing: border-box;} 
+.workMain::after {content: ''; position: absolute; left: 0; bottom: -120px; width: 100%; height: 1px; background-color: #B8B8B8;} 
+.workMain .inner {position: relative; width: 100%;}
+.workMain .inner .box {width: 100%;  display: flex; justify-content: flex-end;}
+.workMain .inner .box + .box {margin-top: 45px;}
+.workMain .inner .box .con{width: 1250px; position: relative;}
+.workMain .inner .box .con::after {content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 1px; background-color: #d9d9d9;}
+.workMain .inner .box .con ul {display: flex; flex-wrap: wrap; align-items: flex-start;
+display: flex; justify-content: space-between; margin-top: 22px;}
+.workMain .inner .box .con ul li:nth-child(1) {width: 350px; font-size: 37px; font-weight: 400; line-height: 1; color: #DBDAD7; margin-top: -10px; text-transform: uppercase;}
+.workMain .inner .box .con ul li .imgBox {width: 430px; overflow: hidden; position: relative;}
+.workMain .inner .box .con ul li .imgBox img {width: 100%; height: auto; display: block;}
+.workMain .inner .box .con ul li .textBox {margin-top: 30px; text-transform: uppercase; line-height: 1;}
+.workMain .inner .box .con ul li .textBox .tit {font-size: 20px; font-weight: 400; color: #1D1A16; margin-bottom: 8px;}
+.workMain .inner .box .con ul li .textBox .txt {font-size: 16px; font-weight: 400; color: #8E8C89; margin-top: 12px;}
+.workMain .inner .box .con ul li .textBox .txt span {margin-left: 8px;}
+
+
+
+/* contactPage */
+.contact {position: relative; width: 100%; height: 100vh; margin-top: 0px; padding: 120px 180px 95px; box-sizing: border-box;} 
+.contact::after {content: ''; position: absolute; left: 0; bottom: -120px; width: 100%; height: 1px; background-color: #B8B8B8;} 
+.contact .inner {position: relative; width: 100%;}
+.contact .inner  .mainTitle {width: 100%; position: relative; display: flex; justify-content: space-between; line-height: 1; margin-bottom: 120px;} 
+.contact .inner  .mainTitle h2 {font-size: 185px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #1D1A16;}
+.contact .inner  .mainTitle h2 span {margin-left: 100px;}
+.contact .inner  .mainTitle p {position: absolute; top: 22px; right: 0; font-size: 16px; color: #777167; font-weight: 400; color: #737270;}
+.contact .inner .box {width: 1230px; position: relative; display: flex; justify-content: flex-end; margin-left: auto;}
+.contact .inner .box .leftBox {width: 65%;}
+.contact .inner .box .leftBox .contactInfo {overflow: hidden;}
+.contact .inner .box .leftBox .contactInfo h3 {font-size: 32px; color: #1D1A16; font-weight: 400; letter-spacing: 0.03em; margin-bottom: 15px;}
+.contact .inner .box .leftBox .contactInfo dl {display: grid; grid-template-columns: 100px auto; row-gap: 10px; column-gap: 50px; line-height: 1; margin-bottom: 15px;}
+.contact .inner .box .leftBox .contactInfo dl dt {font-size: 17px; font-weight: 400; color: #1D1A16; text-transform: uppercase;}
+.contact .inner .box .leftBox .contactInfo dl dd {font-size: 16px; font-weight: 400; color: #4D473F;}
+.contact .inner .box .leftBox .introduction {overflow: hidden;}
+.contact .inner .box .leftBox .introduction h3 {font-size: 32px; color: #1D1A16; font-weight: 400; letter-spacing: 0.03em; margin-top: 60px; margin-bottom: 15px;}
+.contact .inner .box .leftBox .introduction p {font-size: 16px; font-weight: 400; color: #737270; letter-spacing: -0.03em;}
+.contact .rightBox {position: relative; width: 35%;}
+.contact .rightBox .txt {position: absolute;font-size: 16px; font-weight: 400; color: #737270; letter-spacing: -0.03em; margin-right: 35px; margin-top: 30px;}
+.contact .rightBox .txt .p01 {font-size: 16px; position: absolute; top: -5px; left: -10px;}
+.contact .rightBox .txt .p02 {font-size: 16px; position: absolute; top: 20px; left: 138px;}
+.contact .rightBox .img {width: 319px; height: 438px; flex-shrink: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; margin-left: auto;}
+.contact .rightBox .img img {height: 100%; object-fit: cover;}
+
+
+/* text ani */
+.char {display: inline-block; will-change: transform, filter, opacity;}
+
+.aboutMe.motion .name h2{overflow: hidden;}
+.aboutMe.motion .name h2 span {animation-name: texAni01; animation-duration: 3.0s;}
+.aboutMe.motion .name p{overflow: hidden;}
+.aboutMe.motion .name p span {animation-name: texAni01; animation-duration: 3.0s;}
+.con02.motion .inner .likeList li .box {animation-name: texAni01; animation-duration: 3.0s;}
+.contact.motion .inner .box .leftBox .contactInfo h3 {overflow: hidden;}
+.contact.motion .inner .box .leftBox .contactInfo h3 {animation-name: texAni01; animation-duration: 2.0s;}
+.contact.motion .inner .box .leftBox .introduction h3 {overflow: hidden;}
+.contact.motion .inner .box .leftBox .introduction h3 span {animation-name: texAni01; animation-duration: 2.0s;}
+@keyframes texAni01 {
+  0% {opacity: 0;}
+  20% {opacity: 0;}å
+}
+.visual.motion .subText {transform: translate3d(0,0,0) skew(0deg); overflow:hidden;}
+.visual.motion .subText div h2 span{display: block; animation-name: textAni02; animation-duration: 1.3s;}
+.visual.motion .subText div p span{display: block; animation-name: textAni02; animation-duration: 1.8s;}
+footer.motion .txt .info {transform: translate3d(0,0,0) skew(0deg); overflow:hidden;}
+footer.motion .txt .info .box span {display: inline-block; animation-name: textAni02; animation-duration: 1.8s;}
+.con03.motion .inner .quList li .q .text p {transform: translate3d(0,0,0) skew(0deg); overflow:hidden;}
+.con03.motion .inner .quList li:nth-child(1) .q .text p span {display: inline-block; animation-name: textAni02; animation-duration: 1.5s;}
+.con03.motion .inner .quList li:nth-child(2) .q .text p span {display: inline-block; animation-name: textAni02; animation-duration: 2.5s;}
+.con03.motion .inner .quList li:nth-child(3) .q .text p span {display: inline-block; animation-name: textAni02; animation-duration: 3.5s;}
+.con03.motion .inner .quList li:nth-child(4) .q .text p span {display: inline-block; animation-name: textAni02; animation-duration: 4.5s;}
+@keyframes textAni02{
+  0%{opacity: 0;}
+  30%{opacity: 0;transform: translate3d(0,90px,0) skew(-10deg); transform-origin: top left;}
+}
+.intro.motion .inner .txtBox .info,
+.intro.motion .inner .mainText h2 span {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out;}
+.con01.motion .inner .rightBox .list .skills .box {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out;}
+.con01.motion .inner .rightBox .list .education .box {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out; animation-delay: 1s;}
+.con01.motion .inner .rightBox .list .award .box {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out; animation-delay: 2s;}
+.con01.motion .inner .rightBox .list .activity .box {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out; animation-delay: 3s;}
+.workMain.motion .inner .work01 {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out; animation-delay: 1s;}
+.workMain.motion .inner .work02 {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out; animation-delay: 2s;}
+.workMain.motion .inner .work03 {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out; animation-delay: 3s;}
+
+.contact.motion .inner .box .leftBox .contactInfo dl {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out; animation-delay: 0.7s;}
+.contact.motion .inner .box .leftBox .introduction p {animation-name: textAni03; animation-duration: 1.7s; animation-fill-mode: both; animation-timing-function: ease-out; animation-delay: 0.7s;}
+
+
+@keyframes textAni03 {
+  0% {opacity: 0; transform: translateY(60px);}
+  30% {opacity: 0; transform: translateY(60px);}
+}
+
+/*img ani */
+.intro.motion .imgBox {position: relative; overflow: hidden;}
+.intro.motion .imgBox img {transform: translateX(50px); animation: imgAni 1s ease forwards;}
+.intro.motion .imgBox::after {content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 2; animation: mask 1.2s ease forwards;}
+.con02.motion .inner .likeList li .imgBox::after {content: ''; position: absolute; top: 0; left: 0; width: 105%; height: 105%; background: #fff; z-index: 3; animation: mask 1.2s ease forwards; animation-delay: 1s;}
+.con02.motion .inner .likeList li .imgBox .default-img {animation: imgAni 1.2s ease forwards;}
+@keyframes imgAni {
+  0% {transform: translateX(50px); opacity: 0;} 
+  100% {transform: translateX(0); opacity: 1;}
+}
+@keyframes mask {
+  0% {transform: translateX(0);} 
+  100% {transform: translateX(100%);}
+}
+
+
+/* borderLine ani */
+footer.motion .txt .rightBox .info .box::before { content: ""; position: absolute; top: 0; left: 0; height: 1px; background-color: #E6E6E6; width: 100%; animation-name: borderLine; animation-duration: 1.8s;}
+.con01.motion .profile {position: relative;}
+.con01.motion .skills {position: relative;}
+.con01.motion .education {position: relative;}
+.con01.motion .award {position: relative;}
+.con01.motion .activity {position: relative;}
+.con01.motion .inner .rightBox .list .profile::before { content: ""; position: absolute; top: 0; left: 0; height: 1px; background-color: #E6E6E6; width: 100%; animation-name: borderLine; animation-duration: 2.8s;}
+.con01.motion .inner .rightBox .list .skills::before { content: ""; position: absolute; top: 0; left: 0; height: 1px; background-color: #E6E6E6; width: 100%; animation-name: borderLine; animation-duration: 2.8s;}
+.con01.motion .inner .rightBox .list .education::before { content: ""; position: absolute; top: 0; left: 0; height: 1px; background-color: #E6E6E6; width: 100%; animation-name: borderLine; animation-duration: 2.8s; animation-delay: 1s;}
+.con01.motion .inner .rightBox .award::before { content: ""; position: absolute; top: 0; left: 0; height: 1px; background-color: #E6E6E6; width: 100%; animation-name: borderLine; animation-duration: 2.8s; animation-delay: 2s;}
+.con01.motion .inner .rightBox .list .activity::before { content: ""; position: absolute; top: 0; left: 0; height: 1px; background-color: #E6E6E6; width: 100%; animation-name: borderLine; animation-duration: 2.8s; animation-delay: 3s;}
+.workMain .inner .work01 .con::after { content: ""; position: absolute; top: 0; left: 0; height: 1px; background-color: #E6E6E6; width: 100%; animation-name: borderLine; animation-duration: 1.8s; animation-delay: 1.5s;}
+.workMain .inner .work02 .con::after { content: ""; position: absolute; top: 0; left: 0; height: 1px; background-color: #E6E6E6; width: 100%; animation-name: borderLine; animation-duration: 1.8s; animation-delay: 2.5s;}
+.workMain .inner .work03 .con::after { content: ""; position: absolute; top: 0; left: 0; height: 1px; background-color: #E6E6E6; width: 100%; animation-name: borderLine; animation-duration: 1.8s; animation-delay: 3.5s;}
+@keyframes borderLine {
+  0% { width: 0;}
+  70% {width: 0;}
+  }
+
+/* hover */
+.work .inner ul a .imgBox:before {content: ''; width: 200px; height: 200px; border-radius: 100%; border: 1px solid #fffffd; background: url(../img/mainImg_01.png) no-repeat center/100px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 2; transition: all 0.3s; opacity: 0;}
+.work .inner ul a .imgBox:after { content: ''; width: 200px; height: 200px; border-radius: 100%; background: #fffffd url(../img/hover_p.png) no-repeat center/190px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0); z-index: 1; animation: spin1 10s linear infinite; transition: transform 0.3s, opacity 0.3s; opacity: 0;}
+
+.workMain .inner .box .con ul li .imgBox:before {content: ''; width: 170px; height: 170px; border-radius: 100%; border: 1px solid #fffffd; background: url(../img/mainImg_01.png) no-repeat center/90px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 2; transition: all 0.3s; opacity: 0;}
+.workMain .inner .box .con ul li .imgBox:after { content: ''; width: 170px; height: 170px; border-radius: 100%; background: #fffffd url(../img/hover_p.png) no-repeat center/170px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0); z-index: 1; animation: spin1 10s linear infinite; transition: transform 0.3s, opacity 0.3s; opacity: 0;}
+
+
+
+@keyframes spin1 {
+  0% {transform: translate(-50%,-50%) rotate(0deg);}
+  100% {transform: translate(-50%,-50%) rotate(360deg);}
+}
+/* hover 효과*/
+.work .inner ul a .imgBox:hover img {filter: brightness(50%); transition: 0.3s;}
+.work .inner ul a .imgBox:hover::before {opacity: 1;}
+.work .inner ul a .imgBox:hover::after { transform: translate(-50%, -50%) scale(1); opacity: 1;}
+.workMain .inner .box .con ul li .imgBox:hover img {filter: brightness(50%); transition: 0.3s;}
+.workMain .inner .box .con ul li .imgBox:hover::before {opacity: 1;}
+.workMain .inner .box .con ul li .imgBox:hover::after { transform: translate(-50%, -50%) scale(1); opacity: 1;}
+
+
+/* 포트폴리오 작업물 크기 조정 */
+.bbiang .imgBox {width: 100%;}
+.bbiang .imgBox img {width: 100%;}
+.safeApp .imgBox {width: 100%;}
+.safeApp .imgBox img {width: 100%;}
+.poster .imgBox {width: 100%; height: 120vh;}
+.poster .imgBox img {width: 100%; margin-top: 80px;}
+/* responsive */
+
+/* 데스크탑 (최대 1770px) */
+@media screen and (max-width: 1770px){
+  .visual .mainImg .text.ens li:nth-child(1) { top: 60%; left: 34%; }
+  .visual .mainImg .text.ens li:nth-child(2) { top: 50%; left: 67%; }
+  .visual .mainImg .text.ens li:nth-child(3) { top: 20%; left: 97%; }
+}
+
+/* 데스크탑 (최대 1730px) */
+@media screen and (max-width: 1730px){
+  .visual .mainImg .text.ens li:nth-child(1) { top: 60%; left: 35%; }
+  .visual .mainImg .text.ens li:nth-child(2) { top: 50%; left: 65%; }
+  .visual .mainImg .text.ens li:nth-child(3) { top: 20%; left: 97%; }
+}
+
+/* 데스크탑 (최대 1720px) */
+@media screen and (max-width: 1720px){
+  .contact .inner .mainTitle h2 span {margin-left: 60px;}
+  .contact .rightBox .txt .p02 {left: 140px;}
+  .aboutMe .inner{gap: 180px;}
+  
+}
+
+/* 데스크탑 (최대 1679px) */
+@media screen and (max-width: 1679px){
+  .aboutMe .skills .left li {gap: 80px;}
+  .aboutMe .skills .left {margin-left: 0px;}
+  .aboutMe .skills .con {display: block;}
+  .aboutMe .skills li{gap: 84px;}
+  .aboutMe .skills .skill-meter {gap: 20px}
+  .aboutMe .skills .left li {gap: 104px;}
+  .aboutMe .skills .skill-meter .bar {width: 199px;}
+  .contact {height: 90vh;}
+  .intro .inner .txtBox .info {left: 10%;}
+  .intro .inner .mainText {left: 0px;}
+  .aboutMeTit .mainText p {font-size: 104px;}
+  .aboutMeTit .mainText ul li {font-size: 104px;}
+}
+
+/* 데스크탑 (최대 1540px) */
+@media screen and (max-width: 1540px){
+  .visual .mainImg .text.ens li:nth-child(1) { top: 60%; left: 40%; }
+  .visual .mainImg .text.ens li:nth-child(2) { top: 50%; left: 60%; }
+  .aboutMeTit .mainText p {font-size: 99px;}
+  .aboutMeTit .mainText ul li {font-size: 99px;}
+  .workMain .inner .box .con ul li .imgBox {width: 397px;}
+  .workMain .inner .box .con ul li:nth-child(1) {font-size: 30px; width: 279px;}
+  .workMain .inner .box .con ul li .imgBox {width: 401px;}
+}
+
+
+/* 중형 데스크탑 (최대 1440px) */
+@media screen and (max-width: 1440px){
+  header {padding: 0px 150px 0;}
+  .visual {padding: 90px 150px 0; height: 100vh;}
+  .visual .mainText {font-size: 198px;}
+  .visual .mainImg .text.ens li:nth-child(1) { top: 60%; left: 35%; }
+  .visual .mainImg .text.ens li:nth-child(2) { top: 50%; left: 65%; }
+  .visual .mainImg {width: 100%; margin: 48px auto 0}
+  .visual .mainImg .imgBox div:first-child p img {width: 430px;}
+  .visual .mainImg .imgBox div p img {width: 483px;}
+  .aboutMeTit {padding: 124px 150px 0;}
+  .aboutMeTit .mainText p {font-size: 98px;}
+  .aboutMeTit .mainText ul li {font-size: 98px;}
+  .aboutMe {padding: 90px 150px 180px;} 
+  .aboutMe .inner {width: 100%; gap: 88px;}
+  .aboutMe .inner .leftBox .img {width: 355px; height: 355px;}
+  .aboutMe .inner .leftBox .info01 {padding-left: 4px;}
+  .aboutMe .inner .leftBox .info02 {padding-left: 4px;}
+  .aboutMe .inner .leftBox .name {margin: 27px 0 19px;}
+  .aboutMe .inner .leftBox .info01 {margin-bottom: 12px;}
+  .aboutMe .inner .rightBox {margin-top: -53px;}
+  .aboutMe .inner .leftBox dl dt {width: 113px;}
+  .work .inner {padding: 130px 150px 0;}
+  .work .inner .Tit h2 {font-size: 126px;}
+  .work .inner .Tit p {transform: translateY(2px);}
+  .work .inner ul {transform: translateY(-95px); padding: 8% 0%;}
+  .work .inner ul li {width: 571px; padding: 114px;}
+  .work .inner .counter {bottom: 8%;}
+  footer .linBanner ul li p:nth-child(1) {font-size: 104px;}
+  footer .txt .leftBox {max-width: 37%;}
+  footer .txt .leftBox h2 {font-size: 30px; margin-bottom: 17px;}
+  footer .txt .rightBox {transform: translateY(1%);}
+  footer {margin-bottom: 0px;}
+  .intro {padding: 110px 150px 0;}
+  .intro .inner .imgBox {width: 295px;}
+  .intro .inner .txtBox .txt {font-size: 37px;}
+  .intro .inner .txtBox .info {top: 49%; left: 5%;}
+  .intro .inner .mainText h2 span {font-size: 144px;}
+  .intro .inner .mainText {bottom: 110px;}
+  .con01 {padding: 95px 150px 95px;}
+  .con01 .inner .leftBox {width: 20%;}
+  .con01 .inner .rightBox .list li .wrap {gap: 35px;}
+  .con01 .inner .leftBox h2 {font-size: 30px;}
+  .con01 .inner .rightBox {width: 73%;}
+  .con02{padding: 140px 150px 180px;}
+  .con02 .inner .leftBox h2 {font-size: 30px;}
+  .con02 .inner .leftBox {width: 20%;}
+  .con02 .inner .likeList {width: 73%;}
+  .con03 {padding: 90px 150px 95px;}
+  .con03 .inner .leftBox h2 {font-size: 30px;}
+  .con03 .inner .leftBox {width: 20%;}
+  .con03 .inner .quList {width: 73%;}
+  .workTit {padding: 120px 150px 0;}
+  .workTit .mainText .top {font-size: 108px;}
+  .workTit .mainText .bottom {font-size: 108px;}
+  .workTit .mainText .bottom li:nth-child(2) {font-size: 19px;}
+  .workMain {padding: 0px 150px 95px;}
+  .contact {padding: 86px 150px 95px;} 
+  .contact .inner .mainTitle h2 {font-size: 151px;}
+  .contact .inner .box {width: 1137px;}
+  .contact .inner .box .leftBox {width: 55%;}
+  .contact .rightBox .img {height: 398px;}
+}
+
+/* 노트북/소형 데스크탑 (최대 1200px) */
+@media screen and (max-width: 1200px){
+  header {padding: 0px 95px 0;}
+  .visual {padding: 90px 95px 0;}
+  .visual .mainText ul li {font-size: 35px;}
+  .visual .mainText {font-size: 174px;}
+  .visual .mainText p.bigText {top: -12px;}
+  .visual .mainImg .imgBox div:first-child p img {width: 380px;}
+  .visual .mainImg .imgBox div p img {width: 429px;}
+  .visual .subText .subText01 p {font-size: 16px;}
+  .visual .subText .subText02 p {font-size: 18px;}
+  .visual .subText .subText03 p {font-size: 18px;}
+  .aboutMeTit {padding: 95px 95px 0;}
+  .aboutMeTit .mainText p {font-size: 81px;}
+  .aboutMeTit .mainText ul li {font-size: 81px;}
+  .aboutMeTit .mainText ul li:nth-child(1) {font-size: 17px;}
+  .aboutMe {padding: 78px 95px 180px;}  
+  .aboutMe .inner {width: 100%; gap: 50px;}
+  .aboutMe .skills .right li:nth-child(3) {gap: 87px;}
+  .aboutMe .inner .rightBox {margin-top: -96px;}
+  .aboutMe .inner .leftBox .img {width: 293px; height: 298px;} 
+  .aboutMe .inner .leftBox .name {margin: 27px 0 32px;}
+  .aboutMe .inner .leftBox .name h2 {font-size: 30px; }
+  .aboutMe .inner .leftBox .name p {font-size: 18px;}
+  .aboutMe .inner .leftBox dl dt, .aboutMe .inner .leftBox dl dd {font-size: 14px;}
+  .aboutMe .inner .rightBox dl dt {font-size: 14px;}
+  .aboutMe .inner .rightBox dl dd {font-size: 14px;}
+  .aboutMe .activity .con dl dt span:nth-child(2) {font-size: 14px;}
+  .aboutMe .skills .skill-title {font-size: 16px;}
+  .aboutMe .skills .percent p {font-size: 14px;}
+  .aboutMe .skills .percent span {font-size: 11px;}
+  .work .inner {padding: 100px 95px 0;}
+  .work .inner .Tit h2 {font-size: 110px;}
+  .work .inner .Tit p {font-size: 17px;}
+  .work .inner ul a .textBox .txt {font-size: 15px;}
+  .work .inner ul li {width: 543px;}
+  .work .inner ul a .textBox .tit {font-size: 26px;}
+  .work .inner ul a .textBox p:nth-child(2) {margin-top: -2px;}
+  .work .inner .counter {bottom: 9%;}
+  footer {padding: 0px 95px 0;}
+  footer .txt .rightBox .info .box h3 {margin-bottom: 10px;}
+  footer .txt .leftBox h2 {font-size: 27px; margin-bottom: 17px;}
+  footer .txt .leftBox p {font-size: 15px;}
+  footer .txt .rightBox .info .box p {font-size: 14px; margin-bottom: 7px;}
+  footer .txt .rightBox .info .box ul.tag {font-size: 14px;}
+  footer .txt .rightBox .info .box {padding-top: 16px;}
+  footer .txt .rightBox .info dl {margin-top: 12px;}
+  footer .txt .rightBox .info dt {font-size: 14px;}
+  footer .txt .rightBox .info dd {font-size: 14px;}
+  .intro {padding: 100px 95px 0;}
+  .intro .inner .txtBox .txt {font-size: 33px;}
+  .intro .inner .txtBox .info li h3 {font-size: 16px;}
+  .intro .inner .txtBox .info li p {font-size: 14px;}
+  .intro .inner .txtBox .info {top: 45%;}
+  .intro .inner .mainText h2 span {font-size: 131px;}
+  .intro .inner .mainText {left: 20px;}
+  .intro .inner .mainText {bottom: 154px;}
+  .intro .inner .imgBox {width: 277px;}
+  .con01 {padding: 95px 95px 95px;}
+  .con01 .inner .leftBox h2 {font-size: 26px;}
+  .con01 .inner .rightBox .listName {font-size: 24px; padding-top: 7px; margin-bottom: 4px;}
+  .con01 .profile .name p {font-size: 18px;}
+  .con01 .profile .name h2 {font-size: 15px;}
+  .con01 .inner .rightBox .profile dl dt, .con01 .inner .rightBox .profile dl dd {font-size: 14px;}
+  .con01 .inner .rightBox .list .profile dl {column-gap: 20px;}
+  .con01 .skills .skill-title {font-size: 15px;}
+  .con01 .skills .percent p {font-size: 14px;}
+  .con01 .skills .percent p span {font-size: 12px; margin-left: 2px;}
+  .con01 .skills li {gap: 0px; margin-bottom: -2px; margin-left: -10px;}
+  .con01 .skills .skill-meter .bar{width: 145px;}
+  .con01 .inner .rightBox div dl dt {font-size: 14px;}
+  .con01 .inner .rightBox div dl dd {font-size: 14px;}
+  .con01 .inner .rightBox div dl {row-gap: 8px;}
+  .con02 {padding: 110px 95px 180px;}
+  .con02 .inner .leftBox h2 {font-size: 26px;}
+  .con02 .inner .likeList li .box p {font-size: 14px; margin-bottom: 25px;}
+  .con02 .inner .likeList li .box h3 {font-size: 20px; margin-bottom: 4px;}
+  .con02 .inner .likeList li .box .num {width: 26px; height: 26px; margin-bottom: 37px;}
+  .con02 .inner .likeList li .box .num p {font-size: 14px;}
+  .con02 .inner .likeList li .imgBox {width: 225px; height: 187px;}
+  .con03 {padding: 90px 95px 95px; height: 51vh;}
+  .con03 .inner .leftBox h2 {font-size: 26px;}
+  .con03 .inner .quList .q .text p {font-size: 18px;}
+  .quList .a {font-size: 14px; padding: 5px 0 15px; margin: 18px 0 0 125px;}
+  .con03 .inner .quList li {padding: 20px 0px 19px 18px;} 
+  .workTit {padding: 97px 95px 0; height: 48vh;}
+  .workTit .mainText .top {font-size: 93px; margin-bottom: 8px;}
+  .workTit .mainText .bottom {font-size: 93px;}
+  .workTit .mainText .bottom li:nth-child(2) {font-size: 15px;}
+  .workMain .inner .box .con ul li:nth-child(1) {font-size: 27px; width: 217px;}
+  .workMain .inner .box .con ul li .imgBox {width: 318px;}
+  .workMain .inner .box .con ul li .textBox {margin-top: 23px;}
+  .workMain .inner .box .con ul li .textBox .tit {font-size: 18px; margin-bottom: 6px;}
+  .workMain .inner .box .con ul li .textBox .txt {font-size: 14px;}
+  .contact {padding: 86px 95px 95px;}
+  .contact .inner .box {width: 1000px;}
+  .contact .inner .mainTitle h2 {font-size: 133px;}
+  .contact .inner .box .leftBox {width: 48%;}
+  .contact .inner .box .leftBox .contactInfo h3 {font-size: 28px; margin-bottom: 13px;}
+  .contact .inner .box .leftBox .introduction h3 {font-size: 28px; margin-bottom: 13px;}
+  .contact .inner .box .leftBox .introduction p {font-size: 14px;}
+  .contact .inner .box .leftBox .contactInfo dl dt {font-size: 14px;}
+  .contact .inner .box .leftBox .contactInfo dl dd {font-size: 14px;}
+  .contact .rightBox {width: 38%;}
+  .contact .rightBox .img {height: 363px;}
+  .contact .rightBox .txt {font-size: 15px; margin-right: 28px; margin-top: 6px;}
+}
+
+/* 태블릿 가로모드 (최대 1024px) */
+@media screen and (max-width: 1024px){
+  header {height: 7vh;}
+  .gnb ul li a {font-size: 16px;}
+  header .logo {width: 55px;}
+  .visual { padding: 61px 95px 0;}
+  .visual .subText .subText01 p {font-size: 15px;}
+  .visual .subText .subText02 p {font-size: 15px;}
+  .visual .subText .subText03 p {font-size: 15px;}
+  .visual .mainImg .imgBox div:first-child p img {width: 292px;}
+  .visual .mainImg .imgBox div p img {width: 352px;}
+  .visual .mainText {font-size: 134px;}
+  .visual .mainText ul li {font-size: 30px;}
+  .visual .mainImg .text.ens li h2 {width: 29px; height: 29px;}
+  .visual .mainImg .text.ens li p.inner {font-size: 20px;}
+  .visual .subText {width: 100%; margin-top: 12px;}
+  .aboutMeTit {height: 38vh;}
+  .aboutMeTit .mainText p {font-size: 62px;}
+  .aboutMeTit .mainText ul li {font-size: 62px;}
+  .aboutMeTit .mainText ul li:nth-child(1) {font-size: 14px;}
+  .aboutMe {height: 110vh; overflow:visible; padding: 15px 95px 180px;} 
+  .aboutMe .inner {width: 100%; height: unset; min-height: unset; margin-left: auto; display: block;}
+  .aboutMe .inner .leftBox {display: flex; justify-content: space-between; width: 100%; align-items:flex-start;}
+  .aboutMe .inner .leftBox .img {display: none;}
+  .aboutMe .inner .leftBox .name {width: 250px; margin: 0px 0 32px;}
+  .aboutMe .inner .leftBox .info01 {width: 300px;}
+  .aboutMe .inner .leftBox .info02 {width: 300px;}
+  .aboutMe .inner .rightBox {width: 100%; margin-top: -139px;}
+  .aboutMe .inner .rightBox dl {column-gap: 96px;}
+  .aboutMe .skills .skill-meter {margin-left:58px;}
+  .work {height: 255vh;}
+  .work .inner ul{padding: 0% 5%; justify-content: space-between; flex-wrap: wrap;         transform: translateY(56px);}
+  .work .inner ul li {padding: 0; width: 45%; margin-top: 74px;}
+  .work .inner ul li:nth-child(2n-1) {margin-top: 0px;}
+  .work .inner ul a .imgBox {clip-path: none;}
+  .work .inner ul a .textBox {position: static; opacity: 1;}
+  .work .inner ul a .textBox .tag {margin-top: 15px;}
+  .work .inner ul a .textBox .tit {font-size: 23px;}
+  .work .inner ul a .textBox .txt {font-weight: 400;}
+  .work .inner ul a .textBox p:nth-child(2) {margin-bottom: 5px;}
+  .work .inner ul a .imgBox:hover img {filter: brightness(100%);}
+  .work .inner ul a .imgBox:before {display: none;}
+  .work .inner ul a .imgBox:after { display: none;}
+  .work .inner ul a .num {display: none}
+  footer .linBanner ul li p:nth-child(1) {font-size: 88px;}
+  footer .linBanner ul li p:nth-child(2) {font-size: 15px;}
+  footer .txt {display: block; transform: translateY(34%);}
+  footer .txt .leftBox {max-width: 80%;  transform: translateY(236%); justify-content: space-between; }
+  footer .txt .rightBox { max-width: none; width: 60%;  float: right; transform: translateY(45%);  flex: none;}
+  footer .txt .leftBox p {display: none;}
+  .intro .inner .txtBox .info {display: block; top: 45%; left: 0%; }
+  .intro .inner .txtBox .txt {display: none;} 
+  .intro .inner .mainText h2 span {font-size: 90px;}
+  .intro .inner .mainText {bottom: 605px; left: -8px;}
+  .intro .inner .txtBox .info .goal {margin-bottom: 30px;}
+  .con01 .inner {display: block;}
+  .con01 .inner .leftBox {width: 100%; margin-bottom: 45px;}
+  .con01 .inner .leftBox h2 {font-size: 36px;}
+  .con01 .leftBox h2 span br {display: none;}
+  .con01 .leftBox h2 span { white-space: nowrap;}
+  .con01 .inner .rightBox {width: 100%; margin-left: -12px;}
+  .con02{padding: 37px 95px 180px}
+  .con02 .inner {display: block;}
+  .con02 .inner .leftBox {width: 100%; margin-bottom: 65px;}
+  .con02 .inner .leftBox h2 {font-size: 36px;}
+  .con02 .leftBox h2 span br {display: none;}
+  .con02 .leftBox h2 span { white-space: nowrap;}
+  .con02 .inner .likeList {width: 100%;}
+  .con03 {height: 64vh;}
+  .con03 .inner {display: block;}
+  .con03 .inner .leftBox {width: 100%; margin-bottom: 45px;}
+  .con03 .inner .leftBox h2 {font-size: 36px;}
+  .con03 .leftBox h2 span br {display: none;}
+  .con03 .leftBox h2 span { white-space: nowrap;}
+  .con03 .inner .quList {width: 100%;}
+  .workTit .mainText .top {font-size: 70px;}
+  .workTit .mainText .bottom {font-size: 70px;}
+  .workTit .mainText .bottom li:nth-child(2) {font-size: 14px;}
+  .workMain {padding: 0px 95px 95px; height: 143vh;}
+  .workMain .inner .box .con ul li:nth-child(1) {width: 533px; margin-bottom: 20px;}
+  .workMain .inner .box .con ul li .imgBox {width: 388px;}
+  .workMain .inner .box .con ul li .imgBox:hover img {filter: brightness(100%);}
+  .workMain .inner .box .con ul li .imgBox:before {display: none;}
+  .workMain .inner .box .con ul li .imgBox:after { display: none;}
+  .contact .inner .mainTitle h2 {font-size: 105px;}
+  .contact .inner .box {width: 840px;}
+  .contact .rightBox {width: 45%;}
+  .contact .rightBox .img {height: 302px;}
+}
+
+
+
+
+/* 태블릿 세로모드 (최대 768px) */
+@media screen and (max-width: 768px){ 
+  header {height: 5vh;}
+  .visual {padding: 88px 95px 0;}
+  .visual .mainText {font-size: 104px;}
+  .visual .mainText p.bigText {top: 15px;}
+  .visual .mainImg .imgBox div:first-child p img {width: 260px;}
+  .visual .mainImg .imgBox div p img {width: 308px;}
+  .visual .mainImg {margin: 0px auto 60px}
+  .visual .subText .subText01 {width: 100%;}
+  .visual .subText {display: inline-block}
+  .visual .subText .subText02 {margin-top: 34px;}
+  .visual .subText .subText03 {margin-top: 34px;}
+  .visual .mainImg .text.ens li:nth-child(1) {left: 43%;}
+  .aboutMeTit .mainText p {font-size: 47px;}
+  .aboutMeTit .mainText ul li:nth-child(2) {display: none;}
+  .aboutMeTit .mainText ul li:nth-child(3) {font-size: 47px;}
+  .aboutMeTit {height: 30vh;}
+  .aboutMe .inner .leftBox .name {width: 135px;}
+  .aboutMe .inner .leftBox .name h2 {display: none;}
+  .aboutMe .inner .leftBox dl dt{width: 95px;}
+  .aboutMe { width: 100%; height: 100vh} 
+  .work{height: 176vh;}
+  .work .inner .Tit h2{font-size: 94px;}
+  .work .inner .Tit p{font-size: 13px;}
+  .intro.motion .imgBox { width: 206px; margin-top: 208px;}
+  .intro {height: 84vh;}
+  .intro .inner .txtBox .info {top: 54%;}
+  .intro.motion .imgBox::after { height: 60%; margin-top: 0px;}
+  .con01 .inner .leftBox h2 {font-size: 31px;}
+  .con01 .inner .rightBox .list li .wrap {display: block;}
+  .con01 .inner .rightBox .list li .wrap .profile {width: 100%; margin-bottom: 50px;}
+  .con01 .inner .rightBox .list li .wrap .skills {width: 100%}
+  .con01 .skills .skill-title{width: 214px;}
+  .con01 .inner .rightBox .list .profile dl {column-gap: 116px;}
+  .con01 .inner .rightBox div dl {column-gap: 0px;}
+  .con02 {padding: 0px 95px 180px;}
+  .con02 .inner .leftBox h2 {font-size: 31px;}
+  .con02 .inner .likeList{display: block;}
+  .con02 .inner .likeList li {width: 100%;}
+  .con02 .inner .likeList li .imgBox {float: right;}
+  .con02 .inner .likeList li .box{margin-bottom: 70px;}
+  .con02 .inner .likeList li:nth-child(1) .imgBox {margin-top: -222px;}
+  .con02 .inner .likeList li:nth-child(2) .imgBox {margin-top: -222px;}
+  .con02 .inner .likeList li:nth-child(3) .imgBox {margin-top: -222px;}
+  .con03 {height: 56vh;}
+  .con03 .inner .leftBox h2 {font-size: 31px;}
+  .workTit{height: 40vh;}
+  .workTit .mainText .top li:nth-child(2) {display: none;}
+  .workTit .mainText .top{font-size: 98px;}
+  .workTit .mainText .bottom li:nth-child(3){display: none;}
+  .workTit .mainText .bottom li:nth-child(1) {font-size: 98px;}
+  .workTit .mainText .bottom li:nth-child(2) {margin-right: 0px;}
+  .workMain {height: 284vh;}
+  .workMain .inner .box .con ul li .imgBox{width: 100%;}
+  .workMain .inner .box .con ul li .textBox .tit {font-size: 24px;}
+  .workMain .inner .box .con ul li .textBox .txt {font-size: 16px; margin-bottom: 40px;}
+  .workMain .inner .box .con ul li:nth-child(1) {font-size: 26px;}
+  .contact .inner .mainTitle h2 span{margin-left: 0px;}
+  .contact .inner .box {width: 100%;}
+  .contact .inner .box .leftBox {margin-top: 130px;}
+  .contact .inner .box .rightBox {margin-top: -30px;}
+  .contact .rightBox .txt {margin-top: 30px; margin-left: -40px;}
+  .contact .rightBox .txt .p02 {left: 132px;}
+  
+}
+
+/* 모바일 (최대 480px) */
+@media screen and (max-width: 480px){
+  
+}
+
+
+
+
