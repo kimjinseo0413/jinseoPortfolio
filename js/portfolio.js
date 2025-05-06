@@ -249,14 +249,13 @@ function handleScrollRestore() {
 
   const isBack = sessionStorage.getItem(keyFlag);
   const savedScroll = sessionStorage.getItem(keyScroll);
+
   if ((isIndex || isWorkPage) && isBack && savedScroll) {
-    ScrollTrigger.addEventListener('refresh', () => {
-      requestAnimationFrame(() => {
-        window.scrollTo(0, parseInt(savedScroll));
-        sessionStorage.removeItem(keyScroll);
-        sessionStorage.removeItem(keyFlag);
-      });
-    });
+    setTimeout(() => {
+      window.scrollTo(0, parseInt(savedScroll));
+      sessionStorage.removeItem(keyScroll);
+      sessionStorage.removeItem(keyFlag);
+    }, 0); 
   }
 
   if (isIndex || isWorkPage) {
@@ -278,8 +277,7 @@ function handleScrollRestore() {
 
 window.addEventListener('DOMContentLoaded', handleScrollRestore);
 window.addEventListener('pageshow', (event) => {
-
-  if (event.persisted) {
+  if (event.persisted || performance.getEntriesByType('navigation')[0].type === 'back_forward') {
     handleScrollRestore();
   }
 });
