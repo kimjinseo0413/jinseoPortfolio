@@ -239,7 +239,7 @@ if (document.querySelector('.quList')) {
 
 
 
-// 10 .work a의 뒤로가기 위치고정
+// 10 .work a의 뒤로가기 위치고정, 사파리 반영
 function handleScrollRestore() {
   const path = location.pathname;
   const isIndex = path.includes('index.html') || path === '/' || path === '';
