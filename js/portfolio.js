@@ -238,43 +238,48 @@ if (document.querySelector('.quList')) {
 }
 
 
-//_10 workMain 모션 애니메이션 - 한 번만 실행
-if (document.querySelector('.workMain.motion')) {
-  const boxes = document.querySelectorAll('.workMain.motion .inner .box');
-  const lastIndex = boxes.length - 1;
 
-  boxes.forEach((box, index) => {
-    box.style.animation = `textAni03 1.7s ease-out both ${1 + index}s`;
+// 10 .work a의 뒤로가기 위치고정
+function handleScrollRestore() {
+  const path = location.pathname;
+  const isIndex = path.includes('index.html') || path === '/' || path === '';
+  const isWorkPage = path.includes('workPage.html');
+  const keyScroll = isIndex ? 'scrollY_index' : isWorkPage ? 'scrollY_workPage' : null;
+  const keyFlag = isIndex ? 'cameFrom_index' : isWorkPage ? 'cameFrom_workPage' : null;
 
-    
-    if (index === lastIndex) {
-      box.addEventListener('animationend', () => {
-        box.style.animation = '';
-        document.querySelector('.workMain.motion')?.classList.remove('motion');
-      }, { once: true });
-    }
-  });
-}
-
-
-//_11 페이지 전환 시 첫 섹션으로 이동
-window.addEventListener('load', function () {
-  const path = window.location.pathname;
-  let firstSection = null;
-
-  if (path.includes('index.html') || path === '/' || path === '/index.html') {
-    firstSection = document.querySelector('.visual');
-  } else if (path.includes('aboutMePage.html')) {
-    firstSection = document.querySelector('.intro');
-  } else if (path.includes('workPage.html')) {
-    firstSection = document.querySelector('.workTit');
-  } else if (path.includes('contactPage.html')) {
-    firstSection = document.querySelector('.contact');
+  const isBack = sessionStorage.getItem(keyFlag);
+  const savedScroll = sessionStorage.getItem(keyScroll);
+  if ((isIndex || isWorkPage) && isBack && savedScroll) {
+    ScrollTrigger.addEventListener('refresh', () => {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, parseInt(savedScroll));
+        sessionStorage.removeItem(keyScroll);
+        sessionStorage.removeItem(keyFlag);
+      });
+    });
   }
 
-  if (firstSection) {
-    setTimeout(() => {
-      firstSection.scrollIntoView({ behavior: 'smooth' });
-    }, 100); // 약간의 지연을 줘야 애니메이션과 충돌 방지 가능
+  if (isIndex || isWorkPage) {
+    const workLinks = document.querySelectorAll('.work .inner ul a');
+    workLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sessionStorage.setItem(keyScroll, window.scrollY);
+        sessionStorage.setItem(keyFlag, 'true');
+      });
+    });
+  }
+
+  const isDetailPage = !(isIndex || isWorkPage);
+  const cameFromAnyList = sessionStorage.getItem('cameFrom_index') || sessionStorage.getItem('cameFrom_workPage');
+  if (isDetailPage && !cameFromAnyList) {
+    window.scrollTo(0, 0);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', handleScrollRestore);
+window.addEventListener('pageshow', (event) => {
+
+  if (event.persisted) {
+    handleScrollRestore();
   }
 });
