@@ -251,6 +251,7 @@ function handleScrollRestore() {
   const savedScroll = sessionStorage.getItem(keyScroll);
 
   if ((isIndex || isWorkPage) && isBack && savedScroll) {
+    console.log(savedScroll)
     setTimeout(() => {
       window.scrollTo(0, parseInt(savedScroll));
       sessionStorage.removeItem(keyScroll);
@@ -259,6 +260,9 @@ function handleScrollRestore() {
   }
 
   if (isIndex || isWorkPage) {
+    console.log("2")
+    console.log(isBack)
+    console.log(savedScroll)
     const workLinks = document.querySelectorAll('.work .inner ul a');
     workLinks.forEach(link => {
       link.addEventListener('click', () => {
@@ -277,7 +281,9 @@ function handleScrollRestore() {
 
 window.addEventListener('DOMContentLoaded', handleScrollRestore);
 window.addEventListener('pageshow', (event) => {
+  console.log("3")
   if (event.persisted || performance.getEntriesByType('navigation')[0].type === 'back_forward') {
+    console.log("4")
     handleScrollRestore();
   }
 });
