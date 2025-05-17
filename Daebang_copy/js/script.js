@@ -38,12 +38,12 @@ $(function(){
 //.top-visual 이미지슬라이드
 $(function(){
     $('.visual .slide').slick({
-        arrows:true,
-        dots:true,
-        autoplay:true, 
-        fade:true,
-        autoplaySpeed:7000,
-        pauseOnHover:false, 
+        arrows:true,//화살표
+        dots:true,//인디케이터
+        autoplay:true, //자동재생
+        fade:true,//페이드인효과
+        autoplaySpeed:7000,//재생시간
+        pauseOnHover:false, //호버시 멈추는 멈추는것을 해제
         pauseOnFocus:false
     });
     $('.slick-prev').text("prev");
